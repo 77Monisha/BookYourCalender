@@ -3,6 +3,8 @@ import logo from "@/public/icons/tick.png";
 import Image from "next/image";
 import { Button } from "./ui/button";
 import { PenBox } from "lucide-react";
+import { SignedIn, SignedOut, SignInButton } from "@clerk/nextjs";
+import UserMenu from "./user-menu";
 
 export const Header = () => {
   return (
@@ -18,9 +20,14 @@ export const Header = () => {
             Create an Event
           </Button>
         </Link>
-        <Link href="/login">
-          <Button variant="outline">Login</Button>
-        </Link>
+        <SignedOut>
+          <SignInButton forceRedirectUrl="/">
+            <Button variant="outline">Login</Button>
+          </SignInButton>
+        </SignedOut>
+        <SignedIn>
+          <UserMenu />
+        </SignedIn>
       </div>
     </nav>
   );
