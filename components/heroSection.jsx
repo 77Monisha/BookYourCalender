@@ -1,5 +1,8 @@
 import poster from "@/public/assets/poster.png";
+import { ArrowRight } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
+import { Button } from "./ui/button";
 
 const HeroSection = () => {
   return (
@@ -10,6 +13,11 @@ const HeroSection = () => {
           Tired of the hassle of scheduling meetings? BookYourCalendar makes it
           easy to set, manage, and track appointments in just a few clicks.
         </p>
+        <Link href="dashboard">
+          <Button className="text-lg" size="lg">
+            Get Started <ArrowRight size="lg" className="w-5 h-5 ml-2" />
+          </Button>
+        </Link>
       </div>
       <div className="lg:w-1/2">
         <div className="relative w-full max-w-md aspect-square">
