@@ -5,8 +5,11 @@ import { Button } from "./ui/button";
 import { PenBox } from "lucide-react";
 import { SignedIn, SignedOut, SignInButton } from "@clerk/nextjs";
 import UserMenu from "./user-menu";
+import { checkUser } from "@/lib/checkUser";
 
-export const Header = () => {
+export const Header = async () => {
+  await checkUser();
+
   return (
     <nav className="container mx-auto px-8 py-2 flex justify-between items-center shadow-md border-b-2">
       <Link href="/">
@@ -21,7 +24,7 @@ export const Header = () => {
           </Button>
         </Link>
         <SignedOut>
-          <SignInButton forceRedirectUrl="/">
+          <SignInButton forceRedirectUrl="/dashboard">
             <Button variant="outline">Login</Button>
           </SignInButton>
         </SignedOut>
